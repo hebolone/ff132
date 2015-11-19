@@ -124,8 +124,17 @@ public class CClock {
         CUnit currentUnit = m_List.get(iCurrentPosition);
         CNode<CUnit> node = new CNode(currentUnit);
         node.Ancestor = iAncestor;
-        if(iAncestor != null)
+        if(iAncestor != null) {
             node.Level = iAncestor.Level + 1;
+            /* Set Type */
+            /*if(iCurrentPosition > iAncestor.)
+                node.NodeType = TNodeType.RIGHT;
+            else
+                node.NodeType = TNodeType.LEFT;*/
+        } else {
+            node.NodeType = TNodeType.STARTING_POINT;
+        }
+        
         if(! iBT.IsAlreadyPresent(node, currentUnit))
             iBT.AddNode(node);
 
